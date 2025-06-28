@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar Psikologi Anak</title>
+  <style>
+    /* CSS */
+    body {
+      font-family: 'Baloo 2', cursive, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      margin-bottom: 20px;
+    }
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    h1 {
+      color: #6a5acd;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    .menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      background: linear-gradient(45deg, #6a5acd, #9370db);
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 1.1em;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #9370db, #6a5acd);
+    }
+    .emoji {
+      font-size: 1.5em;
+    }
+    .psychology-section {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      display: none; /* Sembunyikan awalnya */
+    }
+    .emotion-card {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      width: 120px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .emotion-card:hover {
+      transform: translateY(-5px);
+    }
+    .breathing-animation {
+      width: 100px;
+      height: 100px;
+      background: #6a5acd;
+      border-radius: 50%;
+      margin: 20px auto;
+      animation: breathe 4s infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="https://img.icons8.com/color/100/000000/mental-health.png" alt="Logo" class="logo">
+      <h1>Explorasi Psikologi Anak</h1>
+      <p style="font-size: 1.2em;">Kenali dirimu dan perasaanmu! 🌈</p>
+    </header>
+
+    <div class="menu">
+      <button class="btn" onclick="showSection('emotions')">
+        <span class="emoji">😊</span> Kenali Emosi
+      </button>
+      <button class="btn" onclick="showSection('breathing')">
+        <span class="emoji">🌬️</span> Latihan Napas
+      </button>
+      <button class="btn" onclick="showSection('story')">
+        <span class="emoji">📖</span> Cerita Psikologi
+      </button>
+      <button class="btn" onclick="showSection('games')">
+        <span class="emoji">🎮</span> Game Perasaan
+      </button>
+    </div>
+
+    <!-- Section: Mengenal Emosi -->
+    <div id="emotions" class="psychology-section">
+      <h2>😊 Kenali Emosimu!</h2>
+      <p>Ayo belajar tentang berbagai perasaan:</p>
+      
+      <div class="emotion-card" style="background: #FFD166;" onclick="playSound('happy')">
+        <span class="emoji">😄</span>
+        <p>Senang</p>
+      </div>
+      
+      <div class="emotion-card" style="background: #EF476F;" onclick="playSound('sad')">
+        <span class="emoji">😢</span>
+        <p>Sedih</p>
+      </div>
+      
+      <div class="emotion-card" style="background: #06D6A0;" onclick="playSound('angry')">
+        <span class="emoji">😠</span>
+        <p>Marah</p>
+      </div>
+      
+      <div class="emotion-card" style="background: #118AB2;" onclick="playSound('surprise')">
+        <span class="emoji">😲</span>
+        <p>Terkejut</p>
+      </div>
+      
+      <audio id="happySound" src="https://www.soundjay.com/human/sounds/laugh-01.mp3"></audio>
+      <audio id="sadSound" src="https://www.soundjay.com/human/sounds/crying-01.mp3"></audio>
+      <audio id="angrySound" src="https://www.soundjay.com/human/sounds/angry-01.mp3"></audio>
+      <audio id="surpriseSound" src="https://www.soundjay.com/human/sounds/scream-01.mp3"></audio>
+    </div>
+
+    <!-- Section: Latihan Pernapasan -->
+    <div id="breathing" class="psychology-section">
+      <h2>🌬️ Latihan Menenangkan Diri</h2>
+      <p>Tarik napas dalam-dalam saat bola mengembang, hembuskan saat mengecil:</p>
+      <div class="breathing-animation"></div>
+      <button class="btn" style="background: #6a5acd;" onclick="startBreathing()">
+        Mulai Latihan
+      </button>
+    </div>
+
+    <!-- Section: Cerita Psikologi -->
+    <div id="story" class="psychology-section">
+      <h2>📖 Cerita Interaktif</h2>
+      <p>Baca cerita ini dan pilih bagaimana perasaanmu:</p>
+      <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 10px 0;">
+        <p>"Hari ini, Rina tidak bisa menemukan mainan favoritnya..."</p>
+        <p>Bagaimana perasaan Rina?</p>
+        <button class="btn" style="background: #FFD166; color: #333;" onclick="showFeedback('sad')">Sedih</button>
+        <button class="btn" style="background: #EF476F; color: white;" onclick="showFeedback('angry')">Marah</button>
+      </div>
+      <div id="storyFeedback" style="display: none; margin-top: 15px; padding: 10px; background: #e9ecef; border-radius: 10px;"></div>
+    </div>
+
+    <!-- Section: Game Psikologi -->
+    <div id="games" class="psychology-section">
+      <h2>🎮 Tebak Ekspresi</h2>
+      <p>Ayo tebak emosi dari ekspresi wajah ini!</p>
+      <div style="font-size: 5em; margin: 20px 0;">😡</div>
+      <div class="menu">
+        <button class="btn" onclick="checkAnswer('angry', true)">Marah</button>
+        <button class="btn" onclick="checkAnswer('happy', false)">Senang</button>
+        <button class="btn" onclick="checkAnswer('sad', false)">Sedih</button>
+      </div>
+      <p id="gameResult" style="font-weight: bold; margin-top: 10px;"></p>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript
+    function showSection(sectionId) {
+      // Sembunyikan semua section
+      document.querySelectorAll('.psychology-section').forEach(section => {
+        section.style.display = 'none';
+      });
+      
+      // Tampilkan section yang dipilih
+      document.getElementById(sectionId).style.display = 'block';
+      
+      // Play sound
+      playSound('click');
+    }
+
+    function playSound(type) {
+      const sounds = {
+        happy: document.getElementById('happySound'),
+        sad: document.getElementById('sadSound'),
+        angry: document.getElementById('angrySound'),
+        surprise: document.getElementById('surpriseSound'),
+        click: new Audio('https://www.soundjay.com/buttons/sounds/button-09.mp3')
+      };
+      sounds[type].play().catch(e => console.log("Sound error"));
+    }
+
+    function startBreathing() {
+      alert("Latihan pernapasan dimulai! Ikuti gerakan bola selama 1 menit.");
+      playSound('happy');
+    }
+
+    function showFeedback(emotion) {
+      const feedback = {
+        sad: "Betul! Rina mungkin sedih karena kehilangan mainannya. Wajar merasa sedih saat kehilangan sesuatu yang penting.",
+        angry: "Bisa jadi! Beberapa orang merasa marah ketika tidak bisa menemukan barang mereka."
+      };
+      document.getElementById('storyFeedback').innerHTML = feedback[emotion];
+      document.getElementById('storyFeedback').style.display = 'block';
+      playSound(emotion);
+    }
+
+    function checkAnswer(answer, isCorrect) {
+      const resultElement = document.getElementById('gameResult');
+      if (isCorrect) {
+        resultElement.textContent = "Benar! 😊 Kamu hebat mengenali emosi!";
+        resultElement.style.color = "green";
+        playSound('happy');
+      } else {
+        resultElement.textContent = "Coba lagi! Ekspresi itu menunjukkan kemarahan.";
+        resultElement.style.color = "red";
+        playSound('sad');
+      }
+    }
+
+    // Tampilkan section pertama secara default
+    window.onload = function() {
+      showSection('emotions');
+    };
+  </script>
+</body>
+</html>
